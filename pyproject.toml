@@ -1,0 +1,70 @@
+[build-system]
+# hatchling 1.28.0 emits Metadata-Version: 2.5, which is not a valid metadata
+# spec version and is rejected by PyPI/twine/packaging. Pin to <1.28 (emits 2.4).
+requires = ["hatchling>=1.27,<1.28"]
+build-backend = "hatchling.build"
+
+[project]
+name = "garmin-mcp-server"
+version = "0.2.0"
+description = "A comprehensive Model Context Protocol (MCP) server for Garmin Connect — bring your health, fitness and activity data to any LLM."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Andrey Chubarov" }]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "garmin",
+    "garmin-connect",
+    "fitness",
+    "health",
+    "llm",
+    "claude",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "mcp>=1.2.0",
+    "garminconnect>=0.2.25",
+    "garth>=0.4.45",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/stitrace/garmin-mcp-server"
+Repository = "https://github.com/stitrace/garmin-mcp-server"
+Issues = "https://github.com/stitrace/garmin-mcp-server/issues"
+
+[project.scripts]
+garmin-mcp-server = "garmin_mcp_server.server:main"
+garmin-mcp-server-login = "garmin_mcp_server.login:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["garmin_mcp_server"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# SECURITY: never commit credentials or Garmin auth tokens
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+secrets.*
+credentials.*
+
+# Garmin Connect OAuth token stores (garth dumps oauth1/oauth2 tokens here)
+.garminconnect/
+.garth/
+tokens/
+*.garth
+oauth1_token.json
+oauth2_token.json
+garmin_tokens/
+
+# Downloaded activity files (may contain GPS / personal data)
+downloads/
+*.fit
+*.tcx
+*.gpx
+*.zip
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.cache/
+
+# Type checkers / linters
+.mypy_cache/
+.dmypy.json
+.ruff_cache/
+.pyright/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Local tooling / agent artifacts (not part of the project)
+.claude/
+.tldr/
+.tldrignore
